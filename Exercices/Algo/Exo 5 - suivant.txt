@@ -1,0 +1,37 @@
+exo 5 - cours algo
+Algorithme menu
+variables n, max, min, somme,i : entiers   moyenne:= réels op:chaine de caracteres
+
+DEBUT
+somme:=0;
+max:= 0;
+*/pas d'initialisation du min, on crée un compteur/* i=1;
+
+Répéter     */on force au moins une fois à saisir quelques choses/*
+écrire ("saisissez un nombre");
+lire (n);
+somme:= somme+n;   */donc faut initialisation/*
+si n>max alors max:=n
+si (i=1 ou n<min) alors min:=n;
+moyenne:= somme/i;
+i=i+1;
+jusqu'à n=0 ;
+
+*/ Si on met moyenne extérieur, on va la calculer qu'une fois mais i sera incrémenté une ultime fois avant le calcul de la moyenne, donc si on le met en bas, moyenne := somme /(i-1)/*
+*/ après le programme propose à l'utilisateur l'opération qu'il souhaite effectuer/*
+
+ecrire ("Choisissez une opération");
+ecrire ("s: pour somme");
+ecrire ("m: pour moyenne");
+ecrire ("max : pour maximum");
+ecrire ('min : pour minimum");
+lire(op);
+suivant op faire    */condition multiple/*
+"s": ecrire (somme);
+"m": ecrire (moyenne);
+"min": ecrire (min);
+"max": ecrire(max);
+sinon ecrire ("au revoir");
+fin suivant
+
+FIN

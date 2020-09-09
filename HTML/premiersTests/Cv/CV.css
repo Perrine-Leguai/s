@@ -1,0 +1,81 @@
+@font-face {
+    font-family: "adventpro";
+    src: url("typo/advent-pro/AdventPro-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "arimo";
+    src: url("typo/arimo/Arimo-Regular.ttf") format("truetype");
+}
+
+#global {
+    width: 780 px;
+    /*largeur admise par les développeurs, en tant que taille de page*/
+    margin: auto;
+    font-family: arimo, Impact, "Arial Black", Verdana, sans-serif;
+}
+
+#nom {
+    font-family: adventpro, Impact, "Arial Black", Verdana, sans-serif;
+    font-size: 3em;
+    color: #ff9c32;
+}
+
+#coordo {
+    font-size: 1.5em;
+}
+
+#entete {
+    display: flex;
+    justify-content: space-between;
+}
+
+#intro {
+    text-align: right;
+    width: 400px;
+    margin-top: 65px;
+    font-size: 0.9em;
+}
+
+#corps {
+    background-color: #f3a8ff46;
+    display: flex;
+    justify-content: space-between;
+}
+
+h3 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 3px;
+    padding-bottom: 0px;
+    margin-top: 2px;
+    padding-top: 0px;
+}
+
+h4 {
+    font-size: 0.8em;
+    color: #666666;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+#corps p {
+    font-size: 0.9em;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.titreintermed {
+    font-family: adventpro, Impact, "Arial Black", Verdana, sans-serif;
+    font-size: 1em;
+    color: #ff9c32;
+}
+
+#stage {
+    width: 324px;
+    display: flex;
+    justify-content: space-between;
+}

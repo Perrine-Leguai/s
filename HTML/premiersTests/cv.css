@@ -1,0 +1,88 @@
+#global {
+    width: 780 px;
+    /*largeur admise par les développeurs, en tant que taille de page*/
+    margin: auto;
+    /* va centrer le contenu */
+    font-family: calibri, Verdana, Geneva, Tahoma, sans-serif font size: 16 px;
+}
+
+.entete {
+    height: 200 px;
+    /* prendre en compte selon taille image ou autres éléments */
+    border: 1px solid black;
+    border-radius: 15% / 15%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: rgba(206, 152, 236, 0.603);
+    margin-bottom: 80px;
+}
+
+.jobcherche {
+    align-items: center;
+    margin-top: 3%;
+    margin-right: 5%;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    /* QUESTION : comment aligner à la verticale ? */
+}
+
+.section {
+    margin-bottom: 70px;
+}
+
+.conteneur {
+    display: flex;
+    justify-content: left;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.contenu {
+    margin-left: 15px;
+}
+
+h6 {
+    color: rgba(206, 152, 236, 0.603);
+    font-size: 1em;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.date {
+    font-weight: bold;
+    font-size: 1em;
+}
+
+#datepro {
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 5%;
+    margin-bottom: 15%;
+}
+
+li {
+    list-style: none;
+}
+
+.contenu span {
+    font-weight: bold;
+    font-style: italic;
+}
+
+#datepro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#description {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section:nth-child(2) {
+    flex: 1;
+    margin-left: 5%;
+}

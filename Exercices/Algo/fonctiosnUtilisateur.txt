@@ -1,0 +1,61 @@
+fonction définies par l'utilisateur
+___________________________________
+
+exo 2
+
+algo etatCivil				
+
+Type 	etatCivil = enregistrement
+				nom: string;
+				anneeNaissance : entiers;
+				ville : string;
+		fin_enregistrement;
+		
+
+variable personne(1,10) : tab de etatCivil; //array of 
+		  i : entiers
+		  
+debut
+			pour i=1 jusqu'à 10 faire
+				ecrire ("saisir votre nom");
+				lire personne(i.nom);
+				ecrire ("saisir votre année de naissance");
+				lire personne (i.anneeNaissance);
+				ecrire ("saisir votre ville");
+				lire personne (i.ville);
+			
+			ecrire (personne(i).nom, personne(i).anneeNaissance, personne(i).ville);
+			
+			fin pour
+Fin
+
+
+
+___________________________________
+
+exo 1
+
+debut
+	
+type 	voyelles = ensemble de caractères
+		
+variable mot(1,n) : tableau de chaine de caractères
+		voyelles : lettres
+		cpt : entiers
+		i : entiers
+Debut
+	voyelles = ['a','e','i','o','u','y','A','E','I','O','U','Y'];				// deja connu en algo car c'est des caractères dans exemple ceux sont des énumérations
+	cpt := 0
+	pour i:=1 jusqu'à length(mot) faire
+	 si voyelles IN mot(i) faire;
+		cpt++;
+		fin si
+	fin pour
+	
+	ecrire ("Il y a ", cpt, "voyelles dans le mot saisi.")
+Fin
+
+___________________________________
+	
+	
+	

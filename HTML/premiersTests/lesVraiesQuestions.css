@@ -1,0 +1,54 @@
+h1 {color: #ff5733}
+h2 {color :#ff8333 }
+em {color: #ac33ff}
+
+footer{
+    display: flex;
+    flex-direction: column;
+ align-items: center;
+}
+
+
+#cadre {
+    border: 3px black double;
+    border-radius: 5px;
+    box-sizing: content-box;
+    width : 300px; 
+}
+
+a{
+    text-decoration: none;
+    font-style : italic;
+}
+
+a:hover { 
+    text-decoration: underline;
+    color : #ff5733;
+ }
+
+ nav li {
+     list-style: none
+ }
+
+ #navAccueil img
+ {
+    height: 200px;
+    margin: 20px;
+}
+
+ #navAccueil 
+ {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ #navAccueil li {
+     display: table-cell;
+ }
+
+ .navPage li{
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 0px;
+ }
