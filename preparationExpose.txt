@@ -1,0 +1,53 @@
+callables
+
+The callable type allows us to pass a callback function to the function that is being called. 
+That is, callback function parameters allow the function being called to dynamically call code 
+that we specify in the callable function parameter. This is useful because it allows us to pass 
+dynamic code to be executed to a function.
+
+For example, one might want to call a function and the function accepts a callback function called log,
+ which would log data in a custom way that you want.
+ 
+ 
+A callable (callback) function is a function that is called inside another function 
+or used as a parameter of another function
+
+1
+
+Callable is a data-type.
+
+note: You can always check whether your variables are of type "callable" 
+by using the built-in is_callable function,
+ giving your variable's handler as its argument.
+
+The "callable" keyword seen in the code, is used for a "Type declaration", 
+also known as "type hint" in PHP 5. this is used to specify which type of 
+argument or parameter your functions or methods accept. this is done 
+by simply putting the "type hint" or "Type declaration" 
+(i.e. the name of the type, like in this case, "callable") before the parameter names.
+
+Whenever using "type hints" or "Type declarations" for your function declarations 
+(i.e. when you've specified which types are allowed/accepted), 
+and you're calling them giving parameters of data-types other than those specified as acceptable, 
+an error is generated.
+
+note: also, class names can be used if you would like to make your function require 
+> an object instantiated from a specific class < for its respective parameter
+
+
+Les fonctions de rappel peuvent être identifiées via le type callable à partir de PHP 5.4. Cette documentation utilise le type callback qui revient exactement au même.
+
+Certaines fonctions, comme call_user_func() ou usort(), acceptent comme paramètre des fonctions de rappel définies par l'utilisateur. Les fonctions de rappel peuvent être de simples fonctions, mais aussi des méthodes d'objets, y compris des méthodes statiques de classe.
+
+Passage d'une fonction de rappel ¶
+Une fonction PHP est passée par son nom, sous forme de chaîne de caractères. Toute fonction interne ou définie par l'utilisateur peut être utilisée, sauf les constructions de langage comme : array(), echo, empty(), eval(), exit(), isset(), list(), print, ou unset().
+
+Une méthode d'un objet instancié est passée comme un tableau contenant un objet à l'index 0, et le nom de la méthode à l'index 1. Accéder aux méthodes protégées et privées à l'intérieur d'une classe est autorisé.
+
+Les méthodes statiques de classe peuvent aussi être passées sans instancier d'objet de cette classe, en passant le nom de la classe au lieu d'un objet à l'index 0. À partir de PHP 5.2.3, il est également possible de passer 'NomDeLaClasse::NomDeLaMethode'.
+
+En dehors des fonctions définies normalement par l'utilisateur, les fonctions anonymes et les fonctions fléchées peuvent aussi être utilisées comme paramètre de type callback.
+
+Générallement, tout objet implémentant __invoke() peut aussi être passé au paramètre callback.
+
+https://fr.wikipedia.org/wiki/Fonction_de_rappel
