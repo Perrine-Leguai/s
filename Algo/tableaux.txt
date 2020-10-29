@@ -1,0 +1,409 @@
+algorithme premier _tableau
+variables 	tableau (1:7) : tableau d'entiers
+			i: entiers
+			
+Debut:
+	Pour (i:=1, i<=7, i++) faire
+		tableau(i):=0;
+		Fin pour
+Fin
+
+
+_____________________________________________________
+
+
+algorithme voyelles
+variables 	voyelles (1:6) : tableau de chaine de caractères
+			i: entiers
+			
+Debut
+	voyelles (1) := "A";
+	voyelles (2) := "E";
+	voyelles (3) := "I";
+	voyelles (4) := "O";
+	voyelles (5) := "U";
+	voyelles (6) := "Y";
+		Fin pour
+Fin
+
+// Bien penser aux guillements, sinon va traiter comme variables //
+_____________________________________________________
+
+algorithme 9_notes
+variables 	tableau (1:9) : tableau de réels
+			i:entiers
+			
+Debut
+	Pour (i=1, i<=9, i++) faire
+		ecrire ("saisir une note");
+		lire (tableau(i));
+		ecrire (tableau (i));
+	Fin pour
+Fin
+
+_____________________________________________________
+
+0 1 4 9 16 25,
+on peut améliorer en mettant tout dans le mm pour
+pour (i=0, i<=5, i++) faire
+	nb(i) := i*i
+	ecrire nb(i)
+_____________________________________________________
+
+1  3  5  7  9  11  13
+simplification :
+tableau N(0,6) : tableau d'entiers
+variables i : entiers
+
+Debut
+
+N(0):=1
+écrire N(0);
+pour (i=1, i<=6, i++) faire
+	n(i):=n(i-1) +2 ;
+	ecrire (n(i));
+Fin pour
+Fin
+
+solution bis
+N(0):= 1
+pour (i=0, i<=6, i++) faire
+	n(i)= n(0)+i*2;
+	écrire (n(i));
+Fin pour
+Fin
+_____________________________________________________
+
+1  1  2  3  5  8 13 21
+_____________________________________________________
+6.7
+algorithme 9_notes
+variables 	tableau (1:9) : tableau de réels
+			i:entiers
+			moyenne, somme: réels
+			
+Debut
+	somme := 0
+	Pour (i=1, i<=9, i++) faire
+		ecrire ("saisir une note");
+		lire (tableau(i));
+		ecrire (tableau (i));
+		somme:= somme + tableau(i);
+	Fin pour
+	moyenne := somme/i;
+	écrire (moyenne);
+Fin
+_____________________________________________________
+6.8	
+algorithme valeurstab
+variable tableau (1, A) : nombre
+		 i, A, B, X, Y : nombre
+		 
+Debut
+	ecrire ("Cb de nombre souhaitez vous entrer ?")
+	lire (A)
+	X:=0
+	Pour (i=1, i<= A, i++) faire
+		ecrire ("saisir un nombre");
+		lire (tableau (i));
+		Si tableau(i)<0
+			alors X:= X+1     //ou X++
+			sinon si tableau (i)>0 
+					alors Y++;
+		Fin si
+	Fin pour
+	
+	écrire ("il y a", X , "valeurs négatives et", Y , "valeurs positives.")
+Fin
+	
+_____________________________________________________
+6.9
+algorithme sommevaleur
+variable tableau(1,A), somme, A, i : nombre
+		
+		
+Début
+	somme := 0
+	pour (i=1, i<=A, i++) faire
+		lire ( tableau(i));
+		somme := somme + tableau(i);
+	Fin pour
+	Ecrire (somme)
+Fin
+
+_____________________________________________________
+6.10
+
+algorithme sommetableaux
+variable	A(1,8), B(1,8), C(1,8) : tableaux d'entiers
+			i : entiers
+
+Début
+	pour (i=1, i<=8, i++) faire
+		C(i):= A(i)+B(i);
+		écrire (C(i));
+	Fin pour
+Fin
+
+_____________________________________________________
+6.11
+
+algorithme sch
+variable 	A(1,n) B(1,m) : tableaux de réels
+			i, Sch : réels
+			
+Debut
+sch :=0
+
+	Pour (i=1, i<=m, i++) faire
+		pour (j=1, j<=n, j++) faire
+			sch:= sch + B(i)*A(j);
+		Fin pour
+	Fin pour
+
+Fin
+
+_____________________________________________________
+6.12
+
+algorithme plus_1
+variable tableau (1, A) : réels
+		 i, A, B, X, Y : réels
+		 
+Debut
+	ecrire ("Cb de nombre souhaitez vous entrer ?")
+	lire (A)
+	X:=0
+	Pour (i=1, i<= A, i++) faire
+		ecrire ("saisir un nombre");
+		lire (B);
+		tableau(i):= B+1;
+		Si tableau(i)<0
+			alors X:= X+1
+		Fin si
+		Y=A-X
+	Fin pour
+	
+	écrire ("il y a", X , "valeurs négatives et", Y , "valeurs positives.")
+Fin
+
+_____________________________________________________
+6.13
+
+algorithme max
+
+variable tableau (1, A) : réels
+		 i, A, max, position : réels
+		 
+Debut
+	ecrire ("Cb de nombres souhaitez vous entrer ?")
+	lire (A)
+	Pour (i=1, i<= A, i++) faire
+		ecrire ("saisir un nombre");
+		lire (tableau(i));
+	Fin pour
+	max := tableau(1);
+	Pour (i=2,j i<=A, i++) 	faire
+							Si tableau(i)>max 	alors 	début
+																		max :=tableau(i);
+																		position := i;
+																	fin
+							Fin si
+	Fin pour
+		
+	écrire ("Le plus grand nombre est ", max, "il est situé en", position, "ème position.")
+Fin
+
+_____________________________________________________
+6.14
+
+algorithme moyennedeclasse
+variable 	notes(1,A): tableau de réels
+			i, A, somme, moyenne,j:réels
+		
+DEBUT
+	Ecrire ("combien d'élèves?");
+	Lire (A);
+	Pour (i=1, i<=A, i++) faire
+		ecrire ("rentrer la note de l'élève");
+		lire (notes(i));
+		somme:= somme + notes(i);
+	Fin pour
+	moyenne := somme/A;
+	j:=0
+	Pour (i=1, i<=A, i++) faire
+		si notes(i)> moyenne alors j:=j+1;
+		Fin si
+	Fin pour
+	écrire ("il y a",j, " notes supérieures à la moyenne");
+Fin
+
+_____________________________________________________
+7.1
+algorithme consecutivite
+variable tab(1,n) : entiers
+				n,i : entiers
+Debut
+	done := faux
+	i=2
+	répéter 
+			Si tab(i)!= tab(i-1)+1 alors
+									done := vrai
+			Fin si
+			i++
+	jusqu'à  (done ou i=n)
+	si done alors
+			écrire ("non consécutif")
+			sinon ("consécutif")
+	Fin si
+Fin
+	
+_____________________________________________________
+7.2
+
+algorithme consecutivite
+variable tab(1,n), i, n, j, temps: entiers
+
+Debut
+	pour (i=1, i<=n, i++) 	faire
+							ecrire ("saisir un nombre");
+							lire tab(i);
+							
+							pour (j=i+1, j<=n, j++) faire
+													si tab(j)<tab(i) alors
+																		temp:= tab(i);
+																		tab(i) := tab(j);
+																		tab(j):= temp;
+													Fin si
+								Fin pour
+	Fin pour
+
+Fin
+
+
+ou
+
+
+Tri par insertion :
+Debut
+	pour (i=1, i<=n, i++) 	faire
+							ecrire ("saisir un nombre");
+							lire tab(i);
+	Fin pour
+	
+	Pour i=1 à n faire
+	
+	max:= tab(i)
+	j:= i+1
+	
+		Tant que (j>=2 et tab(j)>max)
+				tab(j+1):=tab(j)
+				j:=j-1
+				fin tant que 
+		tab(j+1):=max
+		
+	fin pour
+												
+
+
+Tri par sélection :
+variables tab(1,n), pos, temp, min, n, i : entiers
+
+DEBUT
+	pour (i=1) à (n-1) 	faire
+					min := tab (i);
+					pos := i
+					pour (j= i+1) à n faire
+									si (tab(j)<min) alors
+													min := tab(j);
+													pos := j;
+									Fin si
+					Fin pour
+					
+					temp := tab(i);
+					tab(i) := tab(pos);
+					tab(pos) := temp;
+	Fin pour
+	
+
+Tri à bulles :
+
+algorithme permutbulle
+variable 	tab(i,n): entiers
+			n,i,temp : entiers
+			yaPermute : booléen
+			
+DEBUT
+
+	yaPermute := vrai;
+	tant que (yaPermute) faire
+							yaPermute := faux;
+							pour (i=1, i<=n-1, i++) faire
+													Si tab(i)<tab(i+1) alors
+																		debut temp := tab(i);
+																			tab(i):= tab(i+1);
+																			tab (i+1)=temp;
+																			yaPermute:= vrai;
+													Fin si
+							Fin pour
+	Fin tant que
+
+
+_____________________________________________________
+7.3
+algo inverse
+variable tab(1,n) : entier
+			i, n, temp : entiers
+
+Debut						//POSSIBLE AVEC POUR
+	i:=0;
+	Répéter									pour (j=1, j<n, j++) faire
+		temp := tab(i+1);											temp:= tab(j);
+		tab(i+1) := tab(n-i);										tab(j):= tab(n-j+1);
+		tab (n-i) := temp;											tab (n-j+1) := temp;
+		i++															n--
+	jusqu'à ((i+1)>=(n/2)) 					Fin pour
+Fin
+
+_____________________________________________________
+7.4
+algo supprimer
+variables tab(1,n), i, n, x: entiers
+
+Debut
+		pour (i=x, i<=n-1, i++) faire
+									tab(i):= tab(i+1);
+		Fin pour
+	redim tab(n-1);
+Fin	
+
+_____________________________________________________
+7.5
+algo dico
+variable tab(i;j), mot : chaine de caractères
+			i, j := entiers
+			tri : booléen
+Debut
+	
+	écrire ("saisir mot")
+	lire (mot)
+	
+	Tant que i<=j
+				si tab( (i+j)/2):= mot	alors
+										tri := vrai;
+										sinon si tab((i+j)/2)>x alors
+																j:= ((i+j)/2 )-1;
+																sinon i:=((i+j)/2)+1;
+										tri := faux;
+	Fin tant que
+	
+	Si tri alors						// sous entend tri := vrai
+					écrire ("le mot existe");
+					sinon écrire ("mot introuvable");
+Fin
+
+
+
+
+
+

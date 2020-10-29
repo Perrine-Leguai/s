@@ -1,0 +1,341 @@
+1.6																					
+
+algo permutation
+
+procédure permutation (varX,varY : entiers)					// pas fonction car ne renvoie pas de résultat
+	début
+	variable C := entier
+		C:= X;
+		X:= Y;
+		Y:= C;
+														// pas de retourner
+	fin
+Début
+	variable A,B : entiers
+	lire (A,B);
+	permutation(A,B);
+	ecrire (A,B);
+Fin
+
+
+_____________________________________
+3.3
+
+algo ordre
+variable A,B,C : chaines de caractères
+
+procédure tri (A, B, C: chaines de caractères  // string)			// pas var car il n'y a pas besoin de modification
+
+	début
+		si (A<B et B<C) ecrire ("ordonné")
+					sinon  ecrire ("non ordonné")
+		fin si
+	fin
+
+Début
+	lire (A,B,C);
+	tri(A,B,C);
+	ecrire (A,B,C);
+Fin	
+
+
+algo ordre
+variable A,B,C : chaines de caractères
+
+(fonction tri (A, B, C: chaines de caractères): booléen // string)			// focntion au maximum réutilisable avec ce procédé.
+	début
+		si (A<B et B<C) ecrire retourner vrai
+						sinon retourner faux								// obligation de renvoi de résultat, exemple si on n'avait pas mis retourner faux bug dans la matrice
+		fin si																	par contre , on peut mettre le retourner faux en dehors du si
+	fin																			une fois le retourner lu, il arrête la fonction
+
+Début
+	lire (A,B,C);
+	si (fonction tri(A,B,C)) alors
+									écrire ("ordonné");
+							sinon
+									écrire ("non ordonné");
+	fin si
+Fin	
+_____________________________________
+2.3
+
+algo ttc
+variable A,B,C : réels
+
+fonction calculTtc(A,B,C : réels)
+	debut
+		retourner A*B*(1+C/100);
+	Fin
+
+Debut
+	lire (A,B,C)
+	ecrire ("le montant est :" calculTtc(A,B,C));
+ Fin
+
+_____________________________________
+4.8
+
+Algorithme date_valide
+Variable : j,m,a, r, p, s : entiers positif
+
+(fonction validite(var a, varb, varc : entiers)): booleen
+variable estBisextile : booléen
+debut
+
+	estBisextile := (c%400=0 ou (c%4=0 et c%100 != 0));
+	
+	si 	(a>31 ou 
+	b>12 ou
+	(b=2 et ((estBisextile et a>29) ou (!estBisextile et a>28))) ou
+	((b=4 ou b=6 ou b=9 ou b=11) et a>30))
+	alors 
+		retourner faux
+	sinon 																			// Booleen dès qu'on voit uniquement 2 résultats possibles ! 
+		retourner vrai																
+
+
+DEBUT
+	Ecrire (« saisir un jour »)
+	Lire (j)
+	Ecrire (« saisir un mois »)
+	Lire (m)
+	Ecrire (« saisir une année »)
+	Lire (a)
+
+	Si validité(j,m,a) alors
+							écrire ("date valide");
+						sinon 
+							écrire ("date invalide");
+	Fin si
+
+Fin
+
+_____________________________________
+5.8 
+
+algo facto
+variable a : entiers
+
+fonction facto(x:entier): entier
+debut 
+	si x:= 1 alors										//x:=1 condition d'arrêt
+			retourner 1 
+			sinon retourner x* facto(x-1);				// décrémentation
+	fin
+fin
+
+debut
+	ecrire ("saisir un chiffre");
+	lire (a);
+	resultat := facto(a);
+	ecrire ("la factorielle de",x,"est",resultat);
+fin
+
+_____________________________________
+Exo 6:
+
+algo Fibo
+variable n : entiers
+
+fonction Fibo (n : entier): tableau d'entier
+variable f(1,n): tableau d'entiers i: entier
+debut
+	si f(0) := 0 alors retourner 0; fin si
+	si f(1) := 1 alors retourner 1; fin si
+	si i>n alors
+			retourner f(1,n)
+			sinon
+	sinon f(i) := f(i-1)+f(i-2)
+Fin
+
+debut
+	ecrire ("saisir jusqu'où souhaitez vous connaitre la suite de Fibonacci")
+	Lire (n)
+	
+	résultat := Fibo (n);
+Fin
+
+fonction Fibo (n: entier) : entier
+debut	si n=0 alors retourner 0 
+		fin si
+		si n=1 alors retourner 1
+		fin si
+		retourner fibo(n-1)+ fibo(n-2)
+fin
+
+_____________________________________
+5.9	
+
+algo prix																								
+variable A, y, somme: reels																						
+
+procédure rendu(var somme, var y:reels)																			// on ne peut envoyer plusieurs varibales, donc possible de les mettre toutes en tableau et de le retourner après dans le programme principal
+variables D,C,E, rendu : réels																						d devient donc tab(1), c devient tab(2), e devient tab(3)
+debut 																												indiquer dans les variables de la FONCTION le tab(1,3) : réels
+	rendu:=y-somme;																									retourner tab à la fin
+	D : = rendu/10 ;																								
+	C : = (rendu%10) /5 ;																							dans l'algo : déclarer tab(1,3) en variable : tableau entiers
+	E : = rendu%5 ;																									tab := rendu(somme, montant)
+																													ecrire (« rendu de », tab(1), « billets de 10€ », tab(2), « billets de 5€ et », tab(3), « pièces de 1€ ».)
+	Ecrire (« rendu de », D, « billets de 10€ », C, « billets de 5€ et », E, « pièces de 1€ ».)
+fin
+
+Debut
+	Répéter 
+		Écrire (« saisir prix ou 0 si plus d’articles »);
+		Lire (A);
+		Somme :=somme + A;
+	Jusqu’à (A=0)
+	
+	Ecrire (somme)
+	Ecrire (« Somme pour payer »)
+	Lire (y)
+	
+	rendu (somme, y)
+fin
+
+_____________________________________
+7.2 
+
+algorithme permutbulle
+variable 	tab(i,n): entiers
+			n,i,temp : entiers
+			yaPermute : booléen
+			
+procédure switch(var A, var B: entiers)											//pas de résultat, on modifie en mémoire --> procédure
+		variable temp
+	debut 		
+		temp := A;
+		A:= B;
+		B=temp;
+	fin
+
+
+debut
+	yaPermute := vrai;
+	tant que (yaPermute) faire
+						yaPermute := faux;
+						pour (i=1, i<=(n-1), i++) faire
+												switch (tab(i), tab(i+1));
+												yaPermute := vrai ;
+						Fin pour
+fin
+
+
+fonction triDécroissant(tab:tableau d'entier;);tableau d'entiers
+variables  i:entier;
+			yapermute:booleen;
+			
+		début
+			tantque (yapermute)
+			yapermute:=faux;
+			
+			pour (i=1; i<=n; i++) faire
+				si (tableau(i)<tableau(i+1) alors
+						temp:=tableau(i);
+						tableau(i):=tableau(i+1);
+						tableau(i+1):=temp;
+						yapermute=vrai;
+				finSi
+			fin pour
+			return tab;
+		fin
+	
+variables tableau (1:n) : tableau de réels;
+		n,minimum,temp:entier;
+		yapermute:booleen;
+	début
+		lire(n);
+		
+			pour (i=1; i<=n; i++) faire
+				lire(tableau(i));
+				Ecrire ("Entrez une valeur : ");
+			finpour	
+			
+		tableau:=triDécroissant(tableau); // ou si on veut garder le premier tableau intacte on peut mettre "triDécroissant(tableau)" dans une nouvelle variable tableau2
+	fin
+
+__procédure triBulle (var x : tableau d'entiers)
+        variables yaPermute : booléen
+                  temp : entier
+            debut
+            yaPermute := vrai
+            tant que (yaPermute)
+                yaPermute:=faux
+                pour (i=1, i<n, i++)
+                    si (x(i)<x(i+1)) alors debut
+                                               temp := x(i)
+                                               x(i) : = x(i+1)
+                                               x(i+1) : = temp
+                                               yaPermute := vrai
+                    fin_si
+                fin_pour
+            fin_tant_que
+            fin
+variables
+    tab(1:n) : tableau d'entiers
+    n : entiers
+debut
+//tableau déjà saisi
+triBulle(tab)
+fin
+
+___________________________________
+7.3	
+
+algo inverse
+variable tab(1,n) : entier
+			i, n, temp : entiers
+
+procédure inverser(var A, var B : entiers)
+variable temp
+	debut 		
+		temp := tab(A);											
+		tab(A) := tab(B);										
+		tab (B) := temp;
+	fin
+
+
+Debut						
+	i:=0;
+	Répéter									
+		inverser (tab(i+1, tab(n-1));											
+		i++	;														
+	jusqu'à ((i+1)>=(n/2)) 					
+Fin
+_____________________________________
+7.5  
+
+algo dico
+fonction exist(mot: string, dicto:tableau de string): booléen
+variables trouve : booléen,
+    indiceD, indiceF, indiceM : entier;
+Début
+    trouve := faux;
+    indiceD := 1; indiceF := n;
+    répéter
+        indiceM := (indiceD + indiceF) /2;
+        si(mot > dicto(indiceM)) 
+            alors
+                indiceD := indiceM + 1;
+            sinon si (mot < dicto(indiceM))
+                        alors
+                            indiceF := indiceM - 1; 
+                        sinon
+                            retourner vrai;                 
+                  fin_si
+        fin_si
+    jusqu'a (trouve ou indiceD > n ou indiceF <=0)
+    retourner faux;
+Fin_fonction
+variables 
+    dicto(1:n) : tableau de chaines de caractères,
+    mot : chaine de caractère;
+Début
+    lire(mot);
+    si(exist(mot, dicto)) 
+        alors ecrire("mot trouvé");
+        sinon ecrire("mot non trouvé");
+    
+Fin

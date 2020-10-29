@@ -1,0 +1,50 @@
+exo fonctions part II
+
+
+exo 1
+algo caractère
+
+fonction apparition(a: chaine de caractère, b:caractère):entier
+variable 	i, j: entier
+		
+Debut
+	j:=0
+	pour i=1, i<= lenght(a), i++
+	si b := a(i) alors
+						j:= j+1
+	fin si
+	retourner j
+Fin
+
+variable chaine(1,20): string
+		y : caractere
+Debut
+	lire (chaine(1,20))
+	lire(y)
+	resultat := apparition(chaine(1,20), y)
+	ecrire ("le caractère " & y & " est affiché ", & résultat &, " fois")					// si &  n'a pas d'intérêt dans une phrase, ça en a dans une variable.
+fin
+
+_________________________________________________________________
+exo 3
+
+fonction apparition(a: chaine de caractère, b:chaine de caractère):entier
+variable 	i, j: entier
+		
+Debut
+	j:=0
+	pour i=1, i<= lenght(a), i++
+	si b := a(i) & a(i+1)
+						j:= j+1
+	fin si
+	retourner j
+Fin
+
+variable chaine(1,n): string
+		y(1,2) : string
+Debut
+	lire (chaine(1,n))
+	lire(y)
+	resultat := apparition(chaine(1,n), y)
+	ecrire ("le caractère " & y & " est affiché ", & résultat &, " fois")					// si &  n'a pas d'intérêt dans une phrase, ça en a dans une variable.
+fin

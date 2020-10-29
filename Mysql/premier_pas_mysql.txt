@@ -1,0 +1,584 @@
+premier pas mysql
+
+13 . Pour avoir une comission et dans l'ordre croissant
+
+SELECT NoEmp, Nom, prenom FROM `employes` WHERE isnull(comm) =0
+order by `employes`.`comm` ASC
+
+14 . 15 .
+
+SELECT NoEmp, Nom, prenom FROM `employes` WHERE isnull(sup)
+
+16 . service 5 supérieur à 20000€
+SELECT Nom, emploi, sal, NoServ  FROM `employes` WHERE `NoServ` =5 AND `sal` >20000
+
+17.
+SELECT nom  FROM `employes` WHERE `emploi`= "vendeur" AND `NoServ` =6 AND `sal` >9500
+
+18.
+SELECT nom  FROM `employes` WHERE `emploi`= "directeur" OR `emploi` = "president"
+
+19.
+SELECT nom  FROM `employes` WHERE `emploi`= "directeur" AND not `NoServ`= 3
+
+20.
+SELECT nom  FROM `employes` WHERE `emploi`= "directeur" OR ( `emploi`= "technicien" AND `NoServ`= 1)
+
+21.
+SELECT nom  FROM `employes` WHERE (`emploi`= "directeur" OR `emploi`= "technicien") AND `NoServ`= 1
+
+22.
+SELECT nom  FROM `employes` WHERE (`emploi`= "directeur" OR `emploi`= "technicien") AND `NoServ`= 1
+
+23.
+SELECT nom  FROM `employes` WHERE (not `emploi`= "directeur" OR not `emploi`= "technicien") AND `NoServ`= 1
+
+24.
+SELECT nom  FROM `employes` WHERE `emploi`= "tecnhicien" OR `emploi`= "comptable" OR `emploi`= "vendeur"
+
+25.
+SELECT nom  FROM `employes` WHERE not (`emploi`= "technicien" OR `emploi`= "comptable" OR `emploi`= "vendeur")
+
+26.
+SELECT nom  FROM `employes` WHERE not isnull(sup) AND (`NoServ`=1 OR `NoServ`=3 OR `NoServ`=5)
+
+28.
+SELECT nom, sal FROM `employes` WHERE `sal` >= 20000 AND `sal` <=40000
+
+29.
+SELECT nom, sal FROM `employes` WHERE `sal` <= 20000 OR `sal` >=40000
+
+30.
+SELECT nom, embauche, emploi FROM `employes` WHERE not `emploi` = "directeur" AND (`embauche` like "1988%")
+
+31.
+SELECT nom FROM `employes` WHERE  `emploi`= "directeur" AND (`NoServ` IN (2,3,4))
+
+32.
+SELECT nom FROM `employes` WHERE  `nom` like "M%"
+
+33.
+SELECT nom FROM `employes` WHERE  `nom` like "%T"
+
+34.
+SELECT nom FROM `employes` WHERE  `nom` like "%e%e%"
+
+35.
+SELECT nom FROM `employes` WHERE  `nom` like "%e%" AND not (`nom` like "%e%e%" OR `nom`like "%e%e%e%")
+
+36.
+SELECT nom FROM `employes` WHERE  `nom` like "%n%" AND `nom` like "%o%"
+
+37.
+SELECT nom FROM `employes` WHERE  `nom` like "_____n"
+
+38.
+SELECT nom FROM `employes` WHERE  `nom` like "__r%"
+
+39.
+SELECT nom FROM `employes` WHERE  not `nom` like "_____"
+
+40.
+SELECT nom, prenom, NoServ, sal FROM `employes` where `Noserv`=3  
+ORDER BY `employes`.`sal` ASC
+
+41.
+SELECT nom, prenom, NoServ, sal FROM `employes`  where `Noserv`=3
+ORDER BY `employes`.`sal` DESC
+
+42.
+SELECT nom, prenom, NoServ, sal FROM `employes`  where `Noserv`=3
+ORDER BY 4 DESC
+
+43 et 44.
+SELECT nom, prenom, NoServ, sal, emploi FROM `employes`  
+ORDER BY 4 ASC;
+SELECT nom, prenom, NoServ, sal, emploi FROM `employes`  
+ORDER BY 5 DESC
+
+45.
+SELECT nom, prenom, NoServ, comm FROM `employes` where `NoServ`=3  
+ORDER BY `employes`.`Comm` ASC
+
+46.
+SELECT nom, prenom, NoServ, comm FROM `employes` where `NoServ`=3  ANd ifnull(comm,0)
+ORDER BY `employes`.`Comm` DESC
+
+47.
+SELECT nom, prenom, emploi, serv FROM `employes` as E 
+INNER JOIN `services` as S 
+ON E.NoServ= S.NoServ
+
+48 49.
+SELECT nom, prenom, emploi, serv, E.NoServ FROM `employes` as E 
+INNER JOIN `services` as S 
+ON E.NoServ= S.NoServ
+
+50.
+SELECT nom, prenom, emploi, S.* FROM `employes` as E 
+RIGHT JOIN `services` as S 
+ON E.NoServ= S.NoServ
+
+51.
+SELECT E1.nom, E1.embauche, E2.Nom, E2.embauche FROM `employes` as E1 
+INNER JOIN `employes` as E2
+ON E1.sup= E2.NoEmp
+where E1.embauche < E2.embauche
+order by E1.nom asc, E2.nom asc
+
+52.
+(SELECT `E1`.prenom FROM `employes` as E1 where `emploi`= "directeur"AND `NoServ`=1)
+UNION (SELECT `E1`.prenom FROM `employes` as E1 where `emploi`="technicien" AND `NoServ`=1)
+
+53.
+SELECT S.NoServ FROM `services` as S where S.NoServ 
+NOT In (SELECT E.NoServ FROM `employes`as E)
+
+
+54.
+SELECT S.NoServ FROM `services` as S where S.NoServ 
+IN (SELECT E.NoServ FROM `employes`as E)
+
+55.
+SELECT E.nom, E.prenom FROM `employes` as E 
+INNER JOIN `services` as S
+ON E.NoServ= S.NoServ
+where S.ville = "Lille"
+
+56.
+SELECT E2.nom FROM `employes` as E1 
+INNER JOIN `employes` as E2 
+ON E1.sup = E2.sup 
+WHERE E1.nom="Dubois" AND e2.nom != "dubois"
+
+57.
+SELECT NoEmp, nom, prenom FROM `employes` where embauche = "1987-10-25"
+
+58.
+SELECT NoEmp, nom, prenom FROM `employes` where embauche > "1987-10-25"
+order by embauche asc
+
+61.
+SELECT  E.nom, E.prenom, E.NoServ, E.emploi, E.sal FROM `employes` as E
+INNER JOIN `services` as S
+ON E.NoServ = S.NoServ
+where ville in (select S.Ville from `services` as S
+                Inner join `employes` as E 
+                on E.NoServ = S.NoServ
+                where E.nom = "Havet")
+
+62.
+SELECT  E1.nom, E1.prenom, E1.NoServ, E1.emploi FROM `employes` as E1
+where E1.emploi in (SELECT E2.emploi from `employes` as E2
+                 Where E2.NoServ = 3)
+AND E1.NoServ = 1
+
+ou
+
+SELECT E.nom FROM `employes` as E 
+INNER JOIN `EMPLOYES` AS E1 
+ON E.emploi=E1.emploi 
+where E.NoServ = 1 AND E1.NoServ=3
+
+ou
+
+SELECT E.nom FROM `employes` as E 
+INNER JOIN `EMPLOYES` AS E1 
+ON E.NoServ=1 
+AND E1.NoServ=3 
+where E.emploi=E1.emploi
+
+63.
+SELECT  E1.nom, E1.prenom, E1.NoServ, E1.emploi FROM `employes` as E1
+where E1.emploi not in (SELECT E2.emploi from `employes` as E2
+                 Where E2.NoServ = 3)
+AND E1.NoServ = 1
+
+64.
+SELECT  E.nom, E.prenom, E.emploi, E.sal FROM `employes` as E
+where E.Emploi in (select E.emploi from `employes` as E
+                Inner join `employes` as E2 
+                on E.emploi = E2.emploi 
+                where E2.nom = "Caron")
+AND E.sal IN (select E.sal from `employes` as E
+                Inner join `employes` as E2 
+                on E.sal > E2.sal 
+                where E2.nom = "Caron")
+
+65.
+SELECT  E1.nom, E1.prenom, E1.NoServ, E1.emploi FROM `employes` as E1
+where E1.emploi in(SELECT E1.emploi from `employes` as E1
+                 Inner join `services`as s
+                 on E1.NoServ = s.NoServ
+                 Where s.Serv = "ventes")
+AND E1.NoServ = 1
+
+66.
+SELECT  E1.nom, E1.prenom, E1.NoServ, E1.emploi FROM `employes` as E1
+INNER join services as s
+ ON E1.NoServ=s.NoServ
+ where s.ville = "Lille"
+ AND E1.emploi in(select E1.emploi from `employes` as E1
+                Inner join `employes` as E2 
+                on E1.emploi = E2.emploi 
+                where E2.nom = "Richard")
+               
+ORDER BY `E1`.`NoServ` ASC
+
+67.
+SELECT  e.nom, e.prenom, e.NoServ, e.emploi FROM `employes` as e
+where (e.sal>(select avg(e.sal) from `employes` as e where e.NoServ = 1) 
+OR e.sal>(select avg(e.sal) from `employes` as e where e.NoServ = 2)
+OR e.sal>(select avg(e.sal) from `employes` as e where e.NoServ = 3) 
+OR e.sal>(select avg(e.sal) from `employes` as e where e.NoServ = 4)
+OR e.sal>(select avg(e.sal) from `employes` as e where e.NoServ = 5) 
+OR e.sal>(select avg(e.sal) from `employes` as e where e.NoServ = 6) 
+OR e.sal>(select avg(e.sal) from `employes` as e where e.NoServ = 7) )
+Order by e.NoServ ASC
+
+68. employe du service informatique 
+select e.* from `employes` as e
+    where e.NoServ in (select e.NoServ from `employes` as e 
+                    inner join `services` as s 
+                    on e.NoServ = s.NoServ
+                    where serv like "%information%")
+    and DATE_FORMAT(embauche,'%Y') in (select DATE_FORMAT(e.embauche,'%Y') from `employes` as e
+                                        inner join services as s
+                                        on e.NoServ = s.NoServ
+                                        where serv like "%ventes%")
+
+69.
+select e.nom, e.emploi, e.NoServ, s.ville from `employes` as e 
+inner join `services` as s
+ON e.NoServ= s.NoServ
+where e.NoEmp in(SELECT e.NoEmp from `employes` as e
+               inner join `employes` as e2
+               on e.sup = e2.NoEmp
+                  where  e.NoServ != e2.NoServ)
+
+OU CORRECTION BIS
+
+select * from `employes` as e
+inner join `services` as s
+on e.NoServ = s.NoServ
+where e.Noserv != (SELECT e1.NoServ from `employes` as e1
+                    where e1.NoServ = e.sup)                 
+
+70.
+select e.nom, e.prenom, s.Serv, e.sal from `employes` as e 
+inner join `services` as s
+ON e.NoServ= s.NoServ
+
+where e.NoEmp in(SELECT e.sup from `employes` as e
+               inner join `employes` as e2
+               on e.sup = e2.NoEmp)
+
+
+71.
+select e.nom, e.emploi, round((e.sal/12 ),2) "R" from `employes` as e
+order by R asc
+
+
+72.
+select e.nom, e.emploi, e.Comm, e.sal from `employes` as e
+where e.Comm >= 2*e.sal
+
+73.
+select e.nom, e.emploi, e.Comm, e.sal, e.Comm, e.Comm/(e.sal+e.Comm)*100 "%Comm"  from `employes` as e
+where e.emploi = "vendeur"  
+ORDER BY `%Comm` ASC
+
+74.
+select e.nom, e.emploi, s.Serv, (e.sal+e.Comm) "revenu"  from `employes` as e
+INNER join `services` as s
+ON s.NoServ = e.NoServ
+where e.emploi = "vendeur"
+
+75.
+select e.nom, e.prenom, e.emploi, e.sal, e.Comm, (e.sal+ifnull(e.Comm,0)) "revenu"  from `employes` as e
+Where e.NoServ = 3 OR e.NoServ = 5 OR e.NoServ = 6
+
+76.
+select e.nom , e.prenom, e.emploi, e.sal "salaire", e.Comm "commission", ((e.sal+ifnull(e.Comm,0))/12) "revenu mensuel"  from `employes` as e
+Where e.NoServ = 3 OR e.NoServ = 5 OR e.NoServ = 6
+
+77.
+select e.nom , e.prenom, e.emploi, e.sal "salaire", e.Comm "commission", ((e.sal+ifnull(e.Comm,0))/12) "revenu mensuel"  from `employes` as e
+Where e.NoServ = 3 OR e.NoServ = 5 OR e.NoServ = 6
+
+78.
+select e.nom, e.emploi, round((e.sal/264 ),2) "Salaire journalier", round((e.sal/2112 ),2) "Salaire horaire" from `employes` as e
+
+79.
+select nom, emploi, TRUNCATE(sal/264,2) "Salaire journalier", TRUNCATE(sal/2112,2) "Salaire horaire" from `employes`
+
+80.
+select concat(rpad(s.Serv, 20, "---"), ">" ,s.ville)"Service & ville" from `services` as s
+
+81.
+select  e.nom, e.emploi, 
+case when e.Emploi= "president" then 1 
+  	 when e.emploi= "directeur" then 2
+     when e.emploi= "comptable" then 3
+     when e.emploi= "vendeur" then 4
+     when e.emploi= "technicien" then 5
+END"Code Emploi" from `employes` as e
+order by `Code Emploi` ASC
+
+
+82. select
+select replace(e.nom,e.nom, '*****')"nom", emploi from `employes` as e
+where NoServ = 1
+
+83.
+select LPAD(serv, 5, " ")"service", ville from `services`
+
+84.
+select nom, prenom, embauche from `employes`
+where DATE_FORMAT(embauche,'%Y') = 1988
+
+85.
+select lower (prenom)"prenom", upper(nom)"NOM", concat(upper(left(prenom,1)), lower(right(prenom, length(prenom)-1)))"Prenom" from `employes`
+
+86.
+select concat(locate('m', e.prenom), "    ", locate('e', e.prenom))"position M et E", prenom from `employes` as e
+
+87.
+select length(s.serv)"Nombre de lettres par service", s.serv from `services` as s
+
+
+88.
+select e.nom, e.emploi, e.sal , round((e.sal)/2000)"KK", rpad( " ", round((e.sal)/2000) , "#")"Histo" from `employes` as e
+order by `Histo` ASC
+
+89.
+select nom, emploi, embauche from `employes`
+where NoServ=6
+
+90.
+select nom, emploi, DATE_FORMAT(embauche,'%d-%m-%y')"embauche" from `employes`
+where NoServ=6
+
+91.
+select nom, emploi, DATE_FORMAT(embauche,'%a-%d-%M-%y')"embauche" from `employes`
+where NoServ=6
+
+92.
+select nom, emploi, DATE_FORMAT(embauche,'%a-%d-%b-%y')"embauche" from `employes`
+where NoServ=6
+
+93.
+select nom, emploi, DATE_FORMAT(embauche,'%y-%b-%d')"embauche" from `employes`
+where NoServ=6
+
+94.
+select nom, emploi, DATE_FORMAT(embauche,'%a-%d-%M-%y')"embauche" from `employes`
+where NoServ=6
+
+95.
+select DATEDIFF(sysdate(),embauche)"Nbr de jours de contrat" from `employes`
+
+96.
+select TIMESTAMPDIFF (MONTH,embauche,SYSDATE())"Nbr de mois de contrat" from `employes`
+
+97.
+select nom, emploi, DATE_FORMAT(date_add(embauche, interval 12 year), '%a-%d-%M-%y')"embauche", embauche from `employes`
+
+98.
+select TRUNCATE(TIMESTAMPDIFF(YEAR,embauche,SYSDATE()),0)"Nbr de mois de contrat" from `employes`
+where TIMESTAMPDIFF(YEAR,embauche,SYSDATE())> 24
+
+99.
+select  DATEDIFF(sysdate(),'1992-11-4')"Nbr de jours de vie"
+
+100.
+select  TIMESTAMPDIFF (MONTH,'1992-11-04',SYSDATE())"Nbr de mois de vie"
+
+101.
+select avg(e.sal + ifnull(e.comm,0))"moyenne salaire" from `employes` as e
+where e.emploi ="vendeur"
+
+102.
+select e.emploi, avg(e.sal + ifnull(e.comm,0))"moyenne salaire" from `employes` as e
+group by e.emploi
+
+103.
+select sum(e.sal)"moyenne salaire", sum(e.comm)"moyenne comm" from `employes` as e
+where e.emploi="vendeur"
+
+104.
+select max(e.sal)"+ salaire", min(e.sal)"- sal", (max(e.sal)-MIN(e.sal))"différence"  from `employes` as e
+where e.emploi="vendeur"
+
+105.
+select count(e.nom)"nom", count(e.prenom)"prenom", date_format(e.embauche, '%y')"annee" from `employes` as e
+group by `annee`
+
+106.
+select min(length(s.serv))"mot le plus court"from `services` as s
+
+107.
+select nom, emploi, max(sal+comm)"revenu mensuel" from `employes`
+
+108.
+select count(nom)"combien" from `employes`
+where NoServ=3 AND not isnull(comm)
+
+109.
+select emploi, count(emploi)"combien" from `employes`
+where NoServ = 1
+group by emploi
+
+110.
+select count(distinct(NoEmp))"combien" from `employes`
+where NoServ=3
+
+111.
+select s.serv,s.NoServ, round(avg(e.sal),0)"Sal moy" from `services` as s
+inner join `employes` as e
+ON e.NoServ=s.NoServ
+group by s.serv
+
+112.
+select s.serv,s.NoServ, round(avg(e.sal*12),0)"Sal moy" from `services` as s
+inner join `employes` as e
+ON e.NoServ=s.NoServ
+where e.emploi != "president" OR e.emploi!="directeur"
+group by s.serv
+
+113.
+select NoServ, emploi, count(nom)"effectif", avg(sal)"salaire moyen" from `employes`
+group by NoServ, emploi
+
+114.
+select s.serv, e.emploi, count(nom)"effectif", avg(sal)"salaire moyen" from `employes` as e
+inner join `services` as s 
+on s.NoServ= e.NoServ
+group by s.serv, e.emploi
+
+115.
+select  e.emploi, count(e.nom)"effectif", avg(sal)"salaire moyen" from `employes` as e
+group by e.emploi
+having count(e.nom) >2
+
+116.
+select e.NoServ, count(e.emploi)"cb" from `employes` as e
+where e.emploi ="vendeur"
+group by e.NoServ
+having count(e.emploi) >=2
+
+117.
+select e.NoServ, e.comm, round(avg(e.comm))"avgc", round(avg(e.sal/4))"avgs" ,e.sal from `employes` as e
+group by e.NoServ
+having avgc > avgs
+
+118. LES EMPLOIS AYANT UN SALAIRE MOYEN SUPERIEUR AU SALAIRE MOYEN DES DIRECTEURS
+ select emploi
+    from employes
+    group by emploi
+    having avg(sal)>(select avg(sal)
+                        from employes
+                        where emploi like 'directeur');
+
+
+119. AFFICHER SUR LA MM LIGNE? POUR CHAQUE SERVICE? LE NOMBRE D'EMPLOYES NE TOUCHANT PAS DE COMMISSION ET LE NOMBRE D'EMPLOYES TOUCHANT UNE COMMISSION
+ select no_serv, count(*) "nbre employe sans comm", count(comm) "nbre employe avec comm"
+    from gestion_employe.employe
+    where comm is null or comm is not null
+    group by no_serv;
+
+120.
+select e.emploi, count(e.emploi)"effectif", avg(e.sal+e.comm)"moyenne", sum(e.sal+e.comm)"total" from `employes` as e 
+group by e.emploi
+
+COPIER TABLE
+create table Nouvelle-table LIKE table;
+insert into Nouvelle-table select * from table;
+
+MIEUX COMME CA CAR GARDE LES CLEFS PRIMAIRES ET SECONDAIRES
+
+121. + 10 % si salaire inf au salaire moyen
+select e.nom, e.prenom, e.sal, (e.sal*1.10)"Sal +", round(avg(e.sal))"moyenne" from `employes2` as e
+group by e.sal 
+having e.sal < round(avg(e.sal))
+
+update e.sal
+set e.sal = e.sal*1.10
+group by e.sal 
+having e.sal < round(avg(e.sal))
+
+122.
+insert into employes2 value (1606, 'Leguai','Perrine', 'Developpeuse', '2020-10-19','24000', NULL, 1500, 5);
+
+123.
+delete from table where column ="XXX";
+
+124.
+SELECT @salM := round(avg(sal),2) from `employes2`;
+insert into employes2 values (1010, 'Moyen','Toto', 'moyen', '1999-12-12', @salM, NULL ,1000, 1, NULL)
+
+125.
+start transaction;
+set autocommit=0;
+delete from `employes2`
+WHERE  `nom` like "%a%";
+Rollback;
+
+126.
+create table PROJET 
+(
+    noproj int(3) NOT NULL,
+    nomproj VARCHAR(10),
+    budget decimal(6,2)
+)
+
+show tables like `projet`
+rename table `projet` to `proj`;
+
+
+127.
+start transaction;
+set autocommit=0;
+insert into proj
+values ( 101, 'alpha', 250000),
+(102, 'beta', 175000),
+(103, 'gamma', 950000);
+commit;
+
+128.
+UPDATE proj
+SET budget= 15000000
+WHERE noproj=103
+
+129.
+
+alter table `employes2`
+add noproj int(4)
+
+130. AFFECTER LES EMPLOYES DONT NUM > 1350 AU PROJET 102
+
+update `employes2`
+set noproj=102
+where NoEmp>1350
+
+131. AFFECTER LES EMPLOYES N'AYANT PAS DE PROJET AU PROJET 103
+
+update `employes2`as e
+set e.noproj = 103
+where e.noproj <= 1350
+
+ou
+update `employes2`
+set noproj=103
+where noproj is null 
+
+132. SELECTIONNER LES NOMS D'EMPLOYES AVEC LE NOM DE LEUR PROJET
+
+select e.nom, s.serv, p.nomproj from `employes2`as e
+inner join `services` as s
+on e.noserv = s.noserv
+inner join `proj` as p
+on e.noproj = p.noproj
+
+group by e.nom, p.nomproj, s.serv
+

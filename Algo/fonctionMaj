@@ -1,0 +1,142 @@
+algo 17.09
+
+Type Maj= set of caractères
+
+fonction maj(C: tableau de string):booléen
+Variable i,c,d:entiers;
+variable let: Maj;
+
+
+
+Debut
+
+    Let=[A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z]
+  
+    Pour i=1 à N faire;
+    si tab(1) IN leT    alors   c=1
+                                d=1
+                        Si !(tab(i+1) IN Let)    alors c=c+1;
+                                            sinon   si tab(i+1) IN Let alors d=d+1;
+                                            Fin si
+                        Fin si
+                        
+                        Sinon si !(tab(i+1) IN Let) alors faire c=c+1;
+    Fin si
+    Fin Pour
+
+    Si c=N ou d=N alors retourner vrai;
+            sinon retourner faux;
+    Fin si
+
+Fin
+
+Debut
+
+    Ecrire ("Saisir un mot");
+    Lire (Mot(i));
+    Si maj(mot) alors écrire ("l'utilisation des majuscules est correcte")                     
+
+Fin
+
+
+/* deuxième possibilité !*/
+
+
+fonction maj(C: tableau de string):booléen
+Variable c,d:entiers;
+
+fonction
+
+Debut
+    si isLower(1)   alors  répéter 
+                            i=2 ;
+                            d=0;
+                            Si isUpper(c(i)) alors d=d+1;
+                            i++;
+                        Jusqu'à d>0
+                        Si d=0 retourner vrai;
+                        Fin si
+
+                    sinon   c=2 d=2
+                            Tant que (c ou d ) = i alors
+                                si isLower(c(i)) alors c=c+1;
+                                si isUpper (c(i)) alors d=d+1;
+                                i++;
+                            Fin tantque 
+                            si (c ou d)=N retourner vrai;
+                            Fin si
+    Fin si
+
+    retourner faux;
+Fin
+
+variable mot:string;
+maj:booleen
+Debut
+
+    Ecrire ("Saisir un mot");
+    Lire (Mot(i));
+    Si maj(mot) alors écrire ("l'utilisation des majuscules est correcte")                     
+
+Fin                
+
+
+fonction Min(mot:string, indiceInitial:entier) :booléen
+
+Debut
+    pour i=1 àN faire
+        si isUpper(mot(i)) alors retourner faux;
+        fin si
+    Fin pour
+    retourner vrai;
+Fin
+
+fonction Maj(mot:string ) :booléen
+
+Debut
+    pour i=1 àN faire
+        si isLower(mot(i)) alors retourner faux;
+        fin si
+    Fin pour
+    retourner vrai;
+Fin 
+
+
+Fin
+
+fonction premiereMaj(mot:string):booléen
+Debut
+    si isUpepr(mot(1)) et Min(mot,2)
+    
+    alors retourner vrai
+    sinon retourner faux
+Fin
+
+appel : si Min ou premiereMaj ecrire 
+
+
+/* SOLUTION */
+
+de tester le nombre de majuscules dans le mot si=n : ok
+si =1 et mot(1) est maj : ok;
+si =0 est vrai
+
+
+/* Solution 2 */
+
+fonction valide(mot:string):booléen
+Début
+    si isUpper(mot(1)) et isUpepr(mot(2)) alors
+        pour i:=3 à N faire
+            si  isLower(mot(i)) alors retourner faux;
+            Fin si
+        fin pour
+
+        sinon   pour i=2 à N faire
+                    si isUpper(mot(i)) alors retourner faux;
+                    fin si
+                Fin pour
+    Fin si
+    retourner vrai;
+
+Fin

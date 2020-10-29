@@ -1,0 +1,173 @@
+﻿9.6 -- César
+
+fonction trouve(alpha:tableau_string, lettre:string): entier
+
+Debut
+    pour i=1 à length(alpha) faire
+        si alpha(i):= lettre alors
+            retourner i;
+        Fin si
+    Fin pour
+    retourner -1;
+Fin
+
+
+fonction chiffrer(mot:string, b:entier):string
+alpha(1,26):tab string
+pos, trouve: entier
+
+Debut
+     alpha := ['a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z']
+     pour i=1, i<= length(mot), i++ faire
+        pos:= trouve(alpha, mot(i));
+            si      Si pos+b>26 alors  pos:=pos-26;
+                                        mot(i):=alpha(pos+b)
+            sinon   mot(i):= alpha(pos+b);
+    Fin pour
+    retourner mot;
+Fin   
+
+
+Debut
+    ecrire
+    lire
+    ecrire("quel décalage utiliser ?")
+    lire (b)
+    ecrire (chiffrer(mot))
+
+Fin
+
+
+___________________________________________________________
+9.8 -- Crypto 3 avec alphabet aléatoire
+
+fonction code(tab(i):string): string
+variable tab(i), permut(i) : string
+i,j: entiers
+
+
+Debut
+    pour i=1 à length(alpha) faire
+        si alpha(i):= lettre alors
+            retourner i;
+        Fin si
+    Fin pour
+    retourner -1;
+Fin
+
+fonction code(phrase:string, permut:string):string
+variables alpha:string
+pos, i :entiers
+
+Debut
+    alpha:=' ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    permut:="HYLUJPVREAKBNDOFSQZCWMGITX";
+
+
+    pour i=1, i<= length(mot), i++ faire
+        pos:= code(alpha, mot(i));
+            sinon   mot(i):= permut(i);
+    Fin pour
+    retourner mot;
+Fin
+
+Debut
+    ecrire ("saisissez une phrase");
+    lire (phrase(i));
+
+    ecrire (code(phrase(i));)
+Fin
+
+___________________________________________________________
+9.9 Crypto 4 - Chiffre de Vigenère
+
+fonction code(X:string, lettre:string): entier
+i,j: entiers
+
+
+Debut
+    pour i=1 à length(X) faire
+        si X(i):= lettre alors
+            retourner i;
+        Fin si
+    Fin pour
+    retourner -1;
+Fin
+
+fonction decalage(motClé:string):string
+alpha(1,26):tab string
+
+Debut
+     alpha := ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']    
+      pour i=1 à length(phrase), faire
+            si i>length(motClef) alors  i:= i%motClef; 
+                                        b:=code(alpha, motClef(i));
+                                sinon b:=code(alpha,motClef(i));
+
+            c:= code(alpha,phrase(i));
+            f=c+b;
+            si f>26 alors   f=f%26;
+                            phrase(i):=alpha(f);
+                    sinon   phrase(i):=alpha(f);
+     fin pour
+     retourner mot   
+Fin   
+
+ecrire("saisir un mot clé")
+lire (motClé)
+
+ecrire(phrase)
+
+___________________________________________________________
+9.10 Nombre entier
+
+fonction pair(A:entier):booléen
+
+Début   
+    si A%2=0 alors retourner vrai 
+            sinon retourner faux
+Fin
+
+variable i:entier
+Début   
+    ecrire("saisir un chiffre");
+    lire(i)
+
+    si pair(i) écrire ("le chiffre est pair");
+            sinon écrire ("le chiffre est impair");
+Fin
+
+
+___________________________________________________________
+9.11 Nombre Glup
+
+1) Glup:= aleat()*2;
+2) Glup:= aleat()*2 -1;     -1<= Glup <1
+3) Glup:= aleat()*0.3 +1.35;   1.35<= Glup <1.65
+4) Glup := Ent(aleat()*6 )+1;        lancé de dé 1<= Glup <7
+5) Glup := aleat()*17-10.5;     -10.5 <= Glup < 6.5
+6) Glup := Ent(aleat()*11) +2;       deux dés jetés en mm temps  2 <= Glup <13
+
+
+___________________________________________________________
+
+
+correction 9.8:
+foncion chiffrer(mot:string, alphaClr:tab string):string
+
+Début
+    pour i:=1 à length(moi) faire
+        pos:= trouve(alpha, mot(i));
+        mot(i):=alphaCle(pos);
+    Fin pour
+
+    retourner mot
+Fin
+
+Debut
+    lire(mot)
+    lire (aplhaCle)
+
+    chiffrer (mot, alphaCle)
+    ecrire chiffrer(mot,alphaCle)  si on met juste ecrire(mot) on aura le mot de départ
+Fin

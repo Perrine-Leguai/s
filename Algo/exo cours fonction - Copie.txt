@@ -1,0 +1,76 @@
+﻿exo fonctions part II
+
+
+exo 1
+algo caractère
+
+fonction apparition(a: chaine de caractère, b:caractère):entier
+variable 	i: entier
+		
+Debut
+	i:=0
+	pour i=1, i<= chaine.length, i++
+	si y := chaine(i) alors
+						i:= i+1
+	fin si
+	retourner i
+Fin
+
+Debut
+	lire (chaine(1,20))
+	lire(y)
+	resultat i
+	ecrire ("le caractère",y,"est affiché", i, "fois")
+fin
+
+
+_________________________________________________________________
+exo 3
+
+Améliorer l’algorithme du calculateur en utilisant des procédures
+et fonctions
+
+exo 3
+
+fonction nbcaractere(phrase: string, mot : string) : entier	
+cpt , i, j , k : entier	
+			
+fonction compter(phrase: string, mot : string) : entier
+trouve : booléen
+
+debut
+cpt := 0
+	pour i:= 1 à (length(phrase)- lenght(mot)+1) faire 	
+									                         // k temporaire					
+		si (phrase(i) := (mot(1) alors 
+					si (i>lenght(phrase)) alors k := i + 1 ;
+									pour j:= 2 à length(mot) faire							//parcourt le mot
+										si (phrase(k))!= (mot(j)) alors trouve := faux;
+										j := length(mot);
+										FinSi
+									k++;
+									finpour
+
+									sinon si(length(mot) := 1 alors cpt ++
+										trouve := vrai
+										fin si
+					fin si
+
+			
+
+			si trouve = vrai alors cpt++;
+            		finSi
+        	finSi
+	finpour
+	retourner cpt;
+fin
+		
+variable
+mot :string, lettre : caractere; cpt : entier;
+debut
+	lire(phrase, mot)
+	cpt:= nbcaractere(a) (phrase,mot)
+	ecrire ("Pour la phrase:"&mot&", il existe "&cpt&mot);
+fin
+
+

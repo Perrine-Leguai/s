@@ -1,0 +1,47 @@
+Algorithme chevaux_course
+Variable x, y, n, p, pdta, pdtb, pdtc, i :  entiers
+Début
+	Ecrire (« saisir le nombre de chevaux en course »)
+	Lire (n)
+	Ecrire (« Nombre de chevaux joués »)
+	Lire (p)
+	Pdta=1
+Pour (i=1, i<=n, i++) 		faire
+							Pdta : = pdta*i ;
+	Fin pour 
+      
+Pdtb : = 1 ;
+Pour (i=1, i<= (n-p), i++) 	faire  
+							Pdtb : =pdtb*i ;
+	Fin pour
+
+Pdtc : = 1 ;
+Pour (i=1 ; i<=p ; i++) 	faire
+							Pdtc=pdtc*i ;
+	Fin pour
+
+	X : = pdta/ pdtb
+	Y : = X /pdtc
+
+Ecrire (« Dans le désordre : une chance sur », Y, « de gagner ») ;
+Ecrire (« Dans l’ordre : une chance sur », X, « de gagner » ;
+Fin
+
+
+correction bis
+
+pour (i:=5; i=>1; i--) faire;
+
+//deuxième astuce gain de temps,
+les boucles se répètent //
+	
+fp:=1;
+pour (i=p, i=>2, i--) faire
+fp:=fp*i;
+fin pour
+
+fn:=fp;
+pour (i=n; i>p; i--) faire
+fn:= fn*i;
+fin pour
+

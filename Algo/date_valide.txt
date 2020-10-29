@@ -1,0 +1,23 @@
+Algorithme date_valide
+Variable : j,m,a, r, p, s : entiers positif
+
+DEBUT
+Ecrier (« saisir un jour »)
+Lire (j)
+Ecrier (« saisir un mois »)
+Lire (m)
+Ecrier (« saisir une année »)
+Lire (a)
+
+estBisextile := (a%400=0 ou (a%4=0 et a%100 != 0));
+
+si 	(j>31 ou 
+	m>12 ou
+	(m=2 et ((estBisextile et j>29) ou (!estBisextile et j>28))) ou
+	((m=4 ou m=6 ou m=9 ou m=11) et j>30))
+	alors 
+		écrire ("date invalide");
+	sinon 
+		écrire ("date valide");
+
+Fin

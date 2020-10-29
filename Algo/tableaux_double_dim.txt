@@ -1,0 +1,47 @@
+exo cours
+algo etudiants
+variable tab(1:n,1:m) : réels
+				i, j, moyenne, somme, note, n, m : entiers
+
+
+Debut
+	pour i:=1 à n
+				ecrire ("l'étudiant",i, "a les notes suivantes :")
+				somme := 0
+					pour j:=1 à m 
+									ecrire ("saisir note", j ," pour l'élève", i, ":");
+									lire (tab(i, j));
+									ecrire ("note ", j, " :", tab(i,j));
+									somme := somme + tab(i,j);
+					Fin pour
+					Moyenne := somme/j;
+					écrire ("moyenne de l'élève",i,"est de", moyenne);
+	Fin pour
+Fin
+
+
+____________________________________
+7.5
+algo dico
+variable tab(i;j), mot : chaine de caractères
+			i, j := entiers
+			tri : booléen
+Debut
+	
+	écrire ("saisir mot")
+	lire (mot)
+	
+	Tant que i<=j
+				si tab( (i+j)/2):= mot	alors
+										tri := vrai;
+										sinon si tab((i+j)/2)>x alors
+																j:= ((i+j)/2 )-1;
+																sinon i:=((i+j)/2)+1;
+										tri := faux;
+	Fin tant que
+	
+	Si tri alors						// sous entend tri := vrai
+					écrire ("le mot existe");
+					sinon écrire ("mot introuvable");
+Fin
+____________________________________

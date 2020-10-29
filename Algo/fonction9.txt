@@ -1,0 +1,143 @@
+﻿9.3  -- nombre de mots dans une phrase
+
+fonction nbrMot(tab:string):entier
+variable A: string;
+i: entier;
+
+Debut
+    d=1
+    A=" "
+    pour i=1 à N faire,
+        si tab(i)=A alors d=d+1;
+        fin si
+    fin pour
+
+    resultat := d;
+Fin   
+
+Debut
+    écrire("saisissez une phrase")
+    lire (phrase(i))
+
+    écrire("il y a" & nbrMot(phrase) & "mots dans cette phrase.")
+Fin
+
+_________________________________________________________________
+
+9.4 -- Nbr de voyelles   sol1: condition composée       sol2: fonction
+
+debut
+	
+type 	voyelles = ensemble de caractères
+		
+variable phrase(1,n) : tableau de string
+		voyelles : string
+		cpt : entiers
+		i : entiers
+Debut
+	voyelles = ['a','e','i','o','u','y','A','E','I','O','U','Y'];				// deja connu en algo car c'est des caractères dans exemple ceux sont des énumérations
+	cpt := 0
+	pour i:=1 jusqu'à length(phrase) faire
+	 si voyelles IN phrase(i) faire;
+		cpt++;
+		fin si
+	fin pour
+	
+	ecrire ("Il y a ", cpt, "voyelles dans le mot saisi.")
+Fin
+
+
+_________________________________________________________________
+
+9.5 -- suppression un caractères
+
+fonction supp(varTab:string, X:entier): string
+variable tab(1,n): string;
+i,n,x : entiers
+
+Debut
+		pour (i=x, i<=n-1, i++) faire
+									tab(i):= tab(i+1);
+		Fin pour
+	tab(i) := redim tab(n-1);
+
+
+
+    ou 
+        retourner tab(i):= mid(tab,1,A-1) & mid (tab,A+1,N-A );
+        
+Fin
+
+Debut
+    écrire("saisir une phrase")
+    lire (phrase(i));
+    ecrire ("saisir un position de lettre à supprimer")
+    lire(A);
+
+    écrire (supp(phrase, A)
+Fin
+
+_________________________________________________________________
+
+9.6  -- Cryptographie 1
+
+fonction code(tab(i):string): string
+variable tab(i), permut(i) : string
+i,j: entiers
+
+Debut
+    permut0(i)="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    permut(i)="BCDEFGHIJKLMNOPQRSTUVWXYZA";
+
+    pour i=1 à N;
+        pour j=1 à 26
+            si tab(i)= permut0(j) alors
+                tab(i)=permut(j);
+            Finsi
+        Fin pour
+    Fin pour
+
+    retourner tab(i)
+Fin
+
+Debut
+    ecrire ("saisissez une phrase");
+    lire (phrase(i));
+
+    retourner code(phrase(i));
+Fin
+
+/* SOLUTION */
+
+fonction trouve(alpha:tableau_string, lettre:string): entier
+
+Debut
+    pour i=1 à length(alpha) faire
+        si alpha(i):= lettre alors
+            retourner i;
+        Fin si
+    Fin pour
+    retourner -1;
+Fin
+
+
+fonction chiffrer(mot:string):string
+alpha(1,26):tab string
+
+Debut
+     alpha := ['a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z']
+     pour i=1, i<= length(mot), i++ faire
+        pos:= trouve(alpha, mot(i));
+            si      mot(i)='Z' ((ou pos:=26, c'est la mm chose)) alors mot(i)='A';
+            sinon   mot(i):= alpha(pos+1);
+    Fin pour
+    retourner mot;
+Fin   
+
+
+Debut
+    ecrire
+    lire
+    ecrire (chiffrer(mot))
+
+Fin

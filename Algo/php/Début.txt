@@ -1,0 +1,16 @@
+Début
+	Ecrire ("Entrez un mot de passe : ");
+	Lire (motdepasse);
+	Ecrire ("Entrez un alphabet clé : ");
+	Lire (Alpha_cle);
+	Alpha('a', 'b', 'c', 'd'.........'z');
+	
+	
+	Pour (i=1 ; i<= lenght(motdepasse); i++){
+		
+		pos := Trouve(alpha, mot(i));
+		
+		 motdepasse(i) := Alpha_cle(pos);
+		
+	finpour
+	Retourner motdepasse;
